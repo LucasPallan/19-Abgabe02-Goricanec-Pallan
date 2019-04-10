@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SimpleAutomaticBuildProject:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SimpleAutomaticBuildProject_jar</output-path>
+    <root id="archive" name="SimpleAutomaticBuildProject.jar">
+      <element id="module-output" name="SimpleAutomaticBuildProject" />
+    </root>
+  </artifact>
+</component>
