@@ -2,20 +2,37 @@
 
   <!-- first target which creates directories for later usage -->
   <!-- read more about: https://ant.apache.org/manual/targets.html -->
-  <target name="init">
+  <target name="init" depends="clean">
     <mkdir dir="build-ant"/>
   </target>  
   
-  <!-- removes same directories which created by init target -->
+  <target name ="jar" depends="compile">
+      <mkdir dir ="build-ant/jar"/>
+      <jar destfile="build-ant/jar/Main.jar" basedir="build-ant">
+          <manifest>
+              <attribute name ="Main-Class" value="at.fhj.iit.Main"/>
+          </manifest>
+     </jar>
+  </target>
+  
+          <!-- removes same directories which created by init target -->
+          
   <target name="clean">
-	<!-- read more about ant tasks in general: https://ant.apache.org/manual/tasksoverview.html -->
-	<!-- read more about delete task in detail: https://ant.apache.org/manual/Tasks/delete.html -->
   	<delete dir="build-ant"/>
   </target>
   
+  <target name ="run" depends="jar">
+      <echo message="running"/>
+      <java jar="build-ant/jar/Main.jar" output="output.txt" fork="true">
+         <arg value="Lucas"/>
+      </java>
+ </target>
+      
+  
   <!-- compiles defined java src files and store them into destination directory -->
   <target name="compile" depends="init">
-    <javac srcdir="src" destdir="build-ant" includeantruntime="false"/>
+    <javac srcdir="SimpleAutomaticBuildProject/src" destdir="build-ant" includeantruntime="false">
+    </javac>
   </target>  
   
 </project>
